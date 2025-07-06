@@ -9,13 +9,19 @@ import buscador.Buscador;
 import detalles.DetalleAlbum;
 import detalles.DetalleArtistaBanda;
 import detalles.DetalleArtistaSolista;
+import detalles.DetalleFavoritos;
 import inicio.ExplorarAlbumes;
 import inicio.ExplorarArtistas;
 import inicio.ExplorarCanciones;
 import inicio.ExplorarGeneros;
 import inicio.Inicio;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Stack;
 import javax.swing.JFrame;
+import javax.swing.JTextField;
 import login.Login;
 import login.RegistrarUsuario;
 import miPerfil.MiPerfil;
@@ -28,7 +34,8 @@ import miPerfil.MiPerfilEditar;
  */
 public class ControlNavegacion {
     /*Utilidades*/
-    private Stack<JFrame> historial = new Stack<>();
+    private Stack<JFrame> historialAtras = new Stack<>();
+    private Stack<JFrame> historialAdelante = new Stack<>();
     private JFrame frmActual;
     private static ControlNavegacion instancia;
     
@@ -50,6 +57,7 @@ public class ControlNavegacion {
     private DetalleAlbum frmDetalleAlbum;
     private DetalleArtistaBanda frmDetalleBanda;
     private DetalleArtistaSolista frmDetalleSolista;
+    private DetalleFavoritos frmDetalleFavoritos;
     
     /*Forms mi perfil*/
     private MiPerfil frmMiPerfil;
@@ -76,34 +84,77 @@ public class ControlNavegacion {
         
     }
     
+    /*Flujo Ver y editar perfil*/
     public void iniciarVerPerfil(){
         this.frmMiPerfil = new MiPerfil(this);
         this.abrirFrame(frmMiPerfil);
     }
     
-    /*Flujo Ver y editar perfil*/
+    /*Flujo ver Favoritos*/
+    public void iniciarVerFavoritos(){
+        this.frmDetalleFavoritos = new DetalleFavoritos(this);
+        this.abrirFrame(frmDetalleFavoritos);
+        
+    }
     
     
     //Metodos para guardar frame anterior
     
-    public void abrirFrame(JFrame nuevoFrame){
-        if (frmActual!=null) {
-            historial.push(frmActual);
+    private void abrirFrame(JFrame nuevoFrame) {
+        if (frmActual != null) {
+            historialAtras.push(frmActual);
             frmActual.setVisible(false);
         }
-        
+        historialAdelante.clear(); // se pierde el futuro si abres algo nuevo
         frmActual = nuevoFrame;
         frmActual.setVisible(true);
     }
     
-    public void regresar(){
-        if (!historial.isEmpty()) {
-            frmActual.dispose();
-            frmActual = historial.pop();
+    public void regresar() {
+        if (!historialAtras.isEmpty()) {
+            historialAdelante.push(frmActual);
+            frmActual.setVisible(false);
+            frmActual = historialAtras.pop();
             frmActual.setVisible(true);
-        } else{
-            System.out.println("Ya no hay frame anterior");
+        } else {
+            System.out.println("No hay frame anterior");
         }
     }
+    
+    public void adelantar() {
+        if (!historialAdelante.isEmpty()) {
+            historialAtras.push(frmActual);
+            frmActual.setVisible(false);
+            frmActual = historialAdelante.pop();
+            frmActual.setVisible(true);
+        } else {
+            System.out.println("No hay frame siguiente");
+        }
+    }
+    
+    public void agregarClickListeners(Component comp, JTextField txtBuscar) {
+        if (!(comp instanceof JTextField)) {
+            comp.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    if (txtBuscar.hasFocus() && txtBuscar.getText().isEmpty()) {
+                        txtBuscar.setText("");
+                        
+                    }
+                    comp.requestFocusInWindow();
+                }
+            });
+        }
+        if (comp instanceof Container) {
+            for (Component child : ((Container) comp).getComponents()) {
+                agregarClickListeners(child, txtBuscar);
+            }
+        }
+    }
+
+    public JFrame getFrmActual() {
+        return frmActual;
+    }
+    
     
 }

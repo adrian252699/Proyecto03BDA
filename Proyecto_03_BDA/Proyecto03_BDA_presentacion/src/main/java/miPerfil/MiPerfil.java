@@ -21,6 +21,7 @@ public class MiPerfil extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.control=control;
         this.pnlBuscador.setControl(control);
+        this.control.agregarClickListeners(this, pnlBuscador.getTxtBuscar());
     }
 
     /**
@@ -200,16 +201,7 @@ public class MiPerfil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
-//        this.btnEditar.setEnabled(false);
-//        this.btnGuardar.setEnabled(true);
-//            this.txtNombre.setEditable(true);
-//            this.txtApellidoPaterno.setEditable(true);
-//            this.txtApellidoMaterno.setEditable(true);
-//            this.txtCorreo.setEditable(true);
-//            this.txtContrasena.setEditable(true);
-//            this.txtNombreUsuario.setEditable(true);
-        
+
         String password = JOptionPane.showInputDialog(this, "Ingrese su contraseña", "Validacion", JOptionPane.INFORMATION_MESSAGE);
         
         if (password.equals(this.txtContrasena)) {

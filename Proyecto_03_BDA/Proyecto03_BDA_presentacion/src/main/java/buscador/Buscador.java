@@ -84,12 +84,13 @@ public class Buscador extends javax.swing.JPanel {
 
         pnlBuscador = new javax.swing.JPanel();
         btnForward = new javax.swing.JButton();
-        txtBuscar = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         btnPerfil = new javax.swing.JButton();
         btnFavoritos = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        btnHome = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -100,27 +101,12 @@ public class Buscador extends javax.swing.JPanel {
         btnForward.setBackground(new java.awt.Color(0, 153, 51));
         btnForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Forward.png"))); // NOI18N
         btnForward.setBorder(null);
-        pnlBuscador.add(btnForward, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 30, 30));
-
-        txtBuscar.setBackground(new java.awt.Color(153, 153, 153));
-        txtBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        txtBuscar.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtBuscar.setText(" ¿Que quieres escuchar?");
-        txtBuscar.setBorder(null);
-        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+        btnForward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscarActionPerformed(evt);
+                btnForwardActionPerformed(evt);
             }
         });
-        pnlBuscador.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 230, 30));
-
-        btnBuscar.setBackground(new java.awt.Color(0, 153, 51));
-        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setText("Buscar");
-        btnBuscar.setBorder(null);
-        pnlBuscador.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 50, 30));
+        pnlBuscador.add(btnForward, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 30, 30));
 
         btnBack.setBackground(new java.awt.Color(0, 153, 51));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Back.png"))); // NOI18N
@@ -131,9 +117,6 @@ public class Buscador extends javax.swing.JPanel {
             }
         });
         pnlBuscador.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 30, 30));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Search.png"))); // NOI18N
-        pnlBuscador.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 30, 30));
 
         add(pnlBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
@@ -150,7 +133,45 @@ public class Buscador extends javax.swing.JPanel {
         btnFavoritos.setBackground(new java.awt.Color(0, 153, 51));
         btnFavoritos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Favorite.png"))); // NOI18N
         btnFavoritos.setBorder(null);
+        btnFavoritos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFavoritosActionPerformed(evt);
+            }
+        });
         add(btnFavoritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, -1, -1));
+
+        btnBuscar.setBackground(new java.awt.Color(0, 153, 51));
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setText("Buscar");
+        btnBuscar.setBorder(null);
+        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 50, 30));
+
+        txtBuscar.setBackground(new java.awt.Color(153, 153, 153));
+        txtBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        txtBuscar.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtBuscar.setText(" ¿Que quieres escuchar?");
+        txtBuscar.setBorder(null);
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarActionPerformed(evt);
+            }
+        });
+        add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 230, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Search.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
+
+        btnHome.setBackground(new java.awt.Color(0, 153, 51));
+        btnHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Home.png"))); // NOI18N
+        btnHome.setBorder(null);
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+        add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 30, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
@@ -167,12 +188,28 @@ public class Buscador extends javax.swing.JPanel {
         control.regresar();
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnFavoritosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFavoritosActionPerformed
+        // TODO add your handling code here:
+        control.iniciarVerFavoritos();
+    }//GEN-LAST:event_btnFavoritosActionPerformed
+
+    private void btnForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForwardActionPerformed
+        // TODO add your handling code here:
+        control.adelantar();
+    }//GEN-LAST:event_btnForwardActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+        control.iniciarFlujo();
+    }//GEN-LAST:event_btnHomeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnFavoritos;
     private javax.swing.JButton btnForward;
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPerfil;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel pnlBuscador;

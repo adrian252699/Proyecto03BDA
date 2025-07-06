@@ -5,8 +5,11 @@ inicio\ExplorarArtistas.class
 inicio\ExplorarArtistas$1.class
 inicio\ExplorarGeneros.class
 login\Login$1.class
+detalles\DetalleFavoritos.class
 miPerfil\MiPerfil$1.class
 buscador\Buscador$5.class
+control\ControlNavegacion$1.class
+buscador\Buscador$7.class
 inicio\Inicio.class
 buscador\Buscador$2.class
 login\Login.class
@@ -17,7 +20,9 @@ detalles\DetalleAlbum$1.class
 login\RegistrarUsuario.class
 inicio\Inicio$1.class
 miPerfil\MiPerfilEditar.class
+buscador\Buscador$8.class
 detalles\DetalleArtistaBanda.class
+buscador\Buscador$6.class
 Main\NewMain.class
 inicio\ExplorarCanciones$1.class
 miPerfil\MiPerfil$2.class

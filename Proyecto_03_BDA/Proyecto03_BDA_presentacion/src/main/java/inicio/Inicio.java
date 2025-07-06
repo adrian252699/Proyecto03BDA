@@ -66,68 +66,87 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlInicio = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        pnlBuscador = new buscador.Buscador();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        pnlExplorar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         cmbFiltroExplorar = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        scrExplorar = new javax.swing.JScrollBar();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btnFiltrar = new javax.swing.JButton();
-        pnlBuscador = new buscador.Buscador();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
 
         pnlInicio.setBackground(new java.awt.Color(51, 51, 51));
         pnlInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlInicio.add(pnlBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 650, 70));
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setForeground(new java.awt.Color(51, 51, 51));
+
+        pnlExplorar.setBackground(new java.awt.Color(102, 102, 102));
+        pnlExplorar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Explorar");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 46, -1, -1));
+        pnlExplorar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 46, -1, -1));
 
         cmbFiltroExplorar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todo", "Canciones", "Albumes", "Artistas", "Generos" }));
-        cmbFiltroExplorar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        jPanel1.add(cmbFiltroExplorar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
+        cmbFiltroExplorar.setBorder(null);
+        pnlExplorar.add(cmbFiltroExplorar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Canciones");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
-        jPanel1.add(scrExplorar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, -1, 580));
+        pnlExplorar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Artistas");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        pnlExplorar.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Albumes");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+        pnlExplorar.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Generos");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
+        pnlExplorar.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, -1, -1));
 
         btnFiltrar.setBackground(new java.awt.Color(0, 153, 51));
         btnFiltrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnFiltrar.setText("Filtrar");
-        jPanel1.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
+        pnlExplorar.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
 
-        pnlInicio.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 620, 450));
-        pnlInicio.add(pnlBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 650, 70));
+        jButton1.setText("jButton1");
+        pnlExplorar.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 710, -1, -1));
+
+        jScrollPane1.setViewportView(pnlExplorar);
+
+        pnlInicio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 660, 380));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Bienvenido Adrian!");
+        pnlInicio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE)
+            .addComponent(pnlInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -138,14 +157,16 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JComboBox<String> cmbFiltroExplorar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private buscador.Buscador pnlBuscador;
+    private javax.swing.JPanel pnlExplorar;
     private javax.swing.JPanel pnlInicio;
-    private javax.swing.JScrollBar scrExplorar;
     // End of variables declaration//GEN-END:variables
 }

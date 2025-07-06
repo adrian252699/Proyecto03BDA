@@ -20,6 +20,7 @@ public class ExplorarAlbumes extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.controlNavegacion=controlNavegacion;
         this.pnlBuscador.setControl(controlNavegacion);
+        this.controlNavegacion.agregarClickListeners(this, pnlBuscador.getTxtBuscar());
     }
 
     /**

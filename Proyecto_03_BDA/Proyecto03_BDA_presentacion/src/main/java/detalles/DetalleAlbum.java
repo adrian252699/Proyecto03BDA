@@ -21,6 +21,7 @@ public class DetalleAlbum extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.controlNavegacion=controlNavegacion;
+        this.controlNavegacion.agregarClickListeners(this, pnlBuscador.getTxtBuscar());
         
     }
     
@@ -35,6 +36,7 @@ public class DetalleAlbum extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Jpanel1 = new javax.swing.JPanel();
         pnlDetalleAlbum = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -46,10 +48,15 @@ public class DetalleAlbum extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         lblIntegrantes = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        pnlBuscador = new javax.swing.JPanel();
-        buscador1 = new buscador.Buscador();
+        pnlBuscador = new buscador.Buscador();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Jpanel1.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                Jpanel1ComponentAdded(evt);
+            }
+        });
 
         pnlDetalleAlbum.setBackground(new java.awt.Color(102, 102, 102));
         pnlDetalleAlbum.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -89,61 +96,57 @@ public class DetalleAlbum extends javax.swing.JFrame {
         jLabel1.setText("Autor:");
         pnlDetalleAlbum.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
 
-        pnlBuscador.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                pnlBuscadorComponentAdded(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlBuscadorLayout = new javax.swing.GroupLayout(pnlBuscador);
-        pnlBuscador.setLayout(pnlBuscadorLayout);
-        pnlBuscadorLayout.setHorizontalGroup(
-            pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBuscadorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buscador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+        javax.swing.GroupLayout Jpanel1Layout = new javax.swing.GroupLayout(Jpanel1);
+        Jpanel1.setLayout(Jpanel1Layout);
+        Jpanel1Layout.setHorizontalGroup(
+            Jpanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Jpanel1Layout.createSequentialGroup()
+                .addGroup(Jpanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Jpanel1Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(pnlDetalleAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Jpanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pnlBuscadorLayout.setVerticalGroup(
-            pnlBuscadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBuscadorLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(buscador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+        Jpanel1Layout.setVerticalGroup(
+            Jpanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jpanel1Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(pnlDetalleAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(pnlDetalleAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlBuscador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Jpanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(pnlDetalleAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Jpanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pnlBuscadorComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_pnlBuscadorComponentAdded
+    private void Jpanel1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_Jpanel1ComponentAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_pnlBuscadorComponentAdded
+    }//GEN-LAST:event_Jpanel1ComponentAdded
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private buscador.Buscador buscador1;
+    private javax.swing.JPanel Jpanel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -154,7 +157,7 @@ public class DetalleAlbum extends javax.swing.JFrame {
     private javax.swing.JLabel lblArtista;
     private javax.swing.JLabel lblGeneros;
     private javax.swing.JLabel lblIntegrantes;
-    private javax.swing.JPanel pnlBuscador;
+    private buscador.Buscador pnlBuscador;
     private javax.swing.JPanel pnlDetalleAlbum;
     // End of variables declaration//GEN-END:variables
 }

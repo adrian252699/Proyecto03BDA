@@ -17,9 +17,8 @@ public class ExplorarCanciones extends javax.swing.JFrame {
      */
     public ExplorarCanciones(ControlNavegacion controlNavegacion) {
         initComponents();
-        this.setLocationRelativeTo(null);
-        this.controlNavegacion=controlNavegacion;
-        this.pnlBuscador.setControl(controlNavegacion);
+        this.setLocationRelativeTo(null);     
+        this.controlNavegacion.agregarClickListeners(this, pnlBuscador.getTxtBuscar());
     }
 
     /**
