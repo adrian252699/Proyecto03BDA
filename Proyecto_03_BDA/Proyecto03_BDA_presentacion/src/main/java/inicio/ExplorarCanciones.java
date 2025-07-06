@@ -4,17 +4,22 @@
  */
 package inicio;
 
+import control.ControlNavegacion;
+
 /**
  *
  * @author jalt2
  */
 public class ExplorarCanciones extends javax.swing.JFrame {
-
+    private ControlNavegacion controlNavegacion;
     /**
      * Creates new form ExplorarCanciones
      */
-    public ExplorarCanciones() {
+    public ExplorarCanciones(ControlNavegacion controlNavegacion) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.controlNavegacion=controlNavegacion;
+        this.pnlBuscador.setControl(controlNavegacion);
     }
 
     /**

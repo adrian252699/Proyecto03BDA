@@ -4,17 +4,23 @@
  */
 package login;
 
+import control.ControlNavegacion;
+
 /**
  *
  * @author jalt2
  */
 public class Login extends javax.swing.JFrame {
-
+    
+    private ControlNavegacion controlNavegacion;
+    
     /**
      * Creates new form Login
      */
-    public Login() {
+    public Login(ControlNavegacion controlNavegacion) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.controlNavegacion = controlNavegacion;
     }
 
     /**

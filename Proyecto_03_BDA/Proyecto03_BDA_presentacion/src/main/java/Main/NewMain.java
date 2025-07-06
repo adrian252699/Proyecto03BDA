@@ -4,6 +4,7 @@
  */
 package Main;
 
+import control.ControlNavegacion;
 import inicio.Inicio;
 
 /**
@@ -17,9 +18,8 @@ public class NewMain {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Inicio frmInicio = new Inicio();
-        
-        frmInicio.setVisible(true);
+        ControlNavegacion control = ControlNavegacion.getInstance();
+        control.iniciarFlujo();
     }
     
 }

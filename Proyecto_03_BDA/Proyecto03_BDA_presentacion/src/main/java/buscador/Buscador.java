@@ -1,21 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package buscador;
 
-import java.awt.Color;
-import java.awt.Image;
+import control.ControlNavegacion;
+
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.net.URL;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -23,12 +16,15 @@ import javax.swing.SwingUtilities;
  */
 public class Buscador extends javax.swing.JPanel {
     private final String TEXTO_DEFECTO = " ¿Que quieres escuchar?";
-    
+    //private ControlNavegacion control;
     /**
      * Creates new form Buscador
      */
+    ControlNavegacion control = ControlNavegacion.getInstance();
+
     public Buscador() {
         initComponents();
+//        this.control=control;
         txtBuscar.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -59,55 +55,22 @@ public class Buscador extends javax.swing.JPanel {
         });
 //        this.setImageBtn(this.btnBack, "Back.png");
 //        escalarIconoAlTamano(this.btnBack);
-
-        
     }
     
-    private void setImageBtn(JButton btn, String root){
-        URL url = getClass().getResource(root); // SIN /
-        if (url == null) {
-            System.out.println("No se encontró el recurso: " + root);
-            return;
-        }
 
-        ImageIcon image = new ImageIcon(url);
-
-        // Espera a que el botón tenga tamaño válido
-        SwingUtilities.invokeLater(() -> {
-            int width = btn.getWidth() > 0 ? btn.getWidth() : 32;
-            int height = btn.getHeight() > 0 ? btn.getHeight() : 32;
-
-            Icon icon = new ImageIcon(image.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
-            btn.setIcon(icon);
-            this.repaint();
-        });
-    }   
-    
-    private void escalarIconoAlTamano(JButton btn) {
-        Icon iconoOriginal = btn.getIcon();
-        if (iconoOriginal == null || !(iconoOriginal instanceof ImageIcon)) {
-            return;
-        }
-
-        ImageIcon imagenOriginal = (ImageIcon) iconoOriginal;
-
-        // Escalar cada vez que el botón cambie de tamaño
-        btn.addComponentListener(new java.awt.event.ComponentAdapter() {
-            @Override
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                int ancho = btn.getWidth();
-                int alto = btn.getHeight();
-
-                if (ancho > 0 && alto > 0) {
-                    Image imagenEscalada = imagenOriginal.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
-                    btn.setIcon(new ImageIcon(imagenEscalada));
-                }
-            }
-        });
-    }
 
     public JTextField getTxtBuscar() {
         return txtBuscar;
+    }
+
+    public JPanel getPnlBuscador() {
+        return pnlBuscador;
+    }
+    
+    
+
+    public void setControl(ControlNavegacion control) {
+        //this.control = control;
     }
     
     /**
@@ -123,7 +86,7 @@ public class Buscador extends javax.swing.JPanel {
         btnForward = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnPerfil = new javax.swing.JButton();
         btnFavoritos = new javax.swing.JButton();
@@ -159,10 +122,15 @@ public class Buscador extends javax.swing.JPanel {
         btnBuscar.setBorder(null);
         pnlBuscador.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 50, 30));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 51));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Back.png"))); // NOI18N
-        jButton1.setBorder(null);
-        pnlBuscador.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 30, 30));
+        btnBack.setBackground(new java.awt.Color(0, 153, 51));
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Back.png"))); // NOI18N
+        btnBack.setBorder(null);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        pnlBuscador.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 30, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/Search.png"))); // NOI18N
         pnlBuscador.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 30, 30));
@@ -172,6 +140,11 @@ public class Buscador extends javax.swing.JPanel {
         btnPerfil.setBackground(new java.awt.Color(0, 153, 51));
         btnPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/user.png"))); // NOI18N
         btnPerfil.setBorder(null);
+        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerfilActionPerformed(evt);
+            }
+        });
         add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, -1, -1));
 
         btnFavoritos.setBackground(new java.awt.Color(0, 153, 51));
@@ -184,13 +157,23 @@ public class Buscador extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
 
+    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
+        // TODO add your handling code here:
+        control.iniciarVerPerfil();
+    }//GEN-LAST:event_btnPerfilActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        control.regresar();
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnFavoritos;
     private javax.swing.JButton btnForward;
     private javax.swing.JButton btnPerfil;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel pnlBuscador;
     private javax.swing.JTextField txtBuscar;

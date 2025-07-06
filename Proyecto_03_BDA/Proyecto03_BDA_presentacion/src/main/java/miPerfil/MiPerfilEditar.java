@@ -4,17 +4,22 @@
  */
 package miPerfil;
 
+import control.ControlNavegacion;
+
 /**
  *
  * @author jalt2
  */
 public class MiPerfilEditar extends javax.swing.JFrame {
-
+    private ControlNavegacion control;
     /**
      * Creates new form MiPerfilEditar
      */
-    public MiPerfilEditar() {
+    public MiPerfilEditar(ControlNavegacion control) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.control=control;
+        this.pnlBuscador.setControl(control);
     }
 
     /**

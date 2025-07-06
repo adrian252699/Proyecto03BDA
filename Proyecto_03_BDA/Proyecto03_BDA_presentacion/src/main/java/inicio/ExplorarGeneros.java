@@ -4,17 +4,22 @@
  */
 package inicio;
 
+import control.ControlNavegacion;
+
 /**
  *
  * @author jalt2
  */
 public class ExplorarGeneros extends javax.swing.JFrame {
-
+    private ControlNavegacion controlNavegacion;
     /**
      * Creates new form ExplorarGeneros
      */
-    public ExplorarGeneros() {
+    public ExplorarGeneros(ControlNavegacion controlNavegacion) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.controlNavegacion=controlNavegacion;
+        this.pnlBuscador.setControl(controlNavegacion);
     }
 
     /**

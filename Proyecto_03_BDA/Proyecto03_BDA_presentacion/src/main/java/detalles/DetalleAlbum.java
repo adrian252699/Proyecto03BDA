@@ -5,6 +5,7 @@
 package detalles;
 
 import buscador.Buscador;
+import control.ControlNavegacion;
 import java.awt.Component;
 
 /**
@@ -12,13 +13,15 @@ import java.awt.Component;
  * @author jalt2
  */
 public class DetalleAlbum extends javax.swing.JFrame {
-
+    private ControlNavegacion controlNavegacion;
     /**
      * Creates new form DetalleAlbum
      */
-    public DetalleAlbum() {
+    public DetalleAlbum(ControlNavegacion controlNavegacion) {
         initComponents();
-        add(new Buscador());
+        this.setLocationRelativeTo(null);
+        this.controlNavegacion=controlNavegacion;
+        
     }
     
 

@@ -4,17 +4,21 @@
  */
 package detalles;
 
+import control.ControlNavegacion;
+
 /**
  *
  * @author jalt2
  */
 public class DetalleArtistaBanda extends javax.swing.JFrame {
-
+    private ControlNavegacion controlNavegacion;
     /**
      * Creates new form DetalleArtistaBanda
      */
-    public DetalleArtistaBanda() {
+    public DetalleArtistaBanda(ControlNavegacion controlNavegacion) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.controlNavegacion=controlNavegacion;
     }
 
     /**
@@ -36,7 +40,6 @@ public class DetalleArtistaBanda extends javax.swing.JFrame {
         jScrollBar1 = new javax.swing.JScrollBar();
         jLabel5 = new javax.swing.JLabel();
         lblIntegrantes = new javax.swing.JLabel();
-        buscador1 = new buscador.Buscador();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,17 +84,11 @@ public class DetalleArtistaBanda extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(95, 95, 95))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buscador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(buscador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addContainerGap(112, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
@@ -101,7 +98,6 @@ public class DetalleArtistaBanda extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private buscador.Buscador buscador1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;

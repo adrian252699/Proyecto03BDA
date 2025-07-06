@@ -4,17 +4,21 @@
  */
 package login;
 
+import control.ControlNavegacion;
+
 /**
  *
  * @author jalt2
  */
 public class RegistrarUsuario extends javax.swing.JFrame {
-
+    private ControlNavegacion controlNavegacion;
     /**
      * Creates new form RegistrarUsuario
      */
-    public RegistrarUsuario() {
+    public RegistrarUsuario(ControlNavegacion controlNavegacion) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.controlNavegacion=controlNavegacion;
     }
 
     /**

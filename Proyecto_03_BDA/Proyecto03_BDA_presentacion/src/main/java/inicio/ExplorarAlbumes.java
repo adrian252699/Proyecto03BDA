@@ -4,17 +4,22 @@
  */
 package inicio;
 
+import control.ControlNavegacion;
+
 /**
  *
  * @author jalt2
  */
 public class ExplorarAlbumes extends javax.swing.JFrame {
-
+    private ControlNavegacion controlNavegacion;
     /**
      * Creates new form ExplorarAlbumes
      */
-    public ExplorarAlbumes() {
+    public ExplorarAlbumes(ControlNavegacion controlNavegacion) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.controlNavegacion=controlNavegacion;
+        this.pnlBuscador.setControl(controlNavegacion);
     }
 
     /**

@@ -4,11 +4,13 @@
  */
 package inicio;
 
+import control.ControlNavegacion;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
@@ -17,11 +19,17 @@ import javax.swing.JTextField;
  */
 public class Inicio extends javax.swing.JFrame {
     private final String TEXTO_DEFECTO = " ¿Que quieres escuchar?";
+    private ControlNavegacion controlNavegacion;
+    private JPanel buscador;
     /**
      * Creates new form Inicio
      */
-    public Inicio() {
+    public Inicio(ControlNavegacion controlNavegacion) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.controlNavegacion=controlNavegacion;
+        this.buscador = buscador;
+        this.pnlBuscador.setControl(controlNavegacion);
         this.agregarClickListeners(this, this.pnlBuscador.getTxtBuscar());
     }
     
@@ -43,6 +51,10 @@ public class Inicio extends javax.swing.JFrame {
                 agregarClickListeners(child, txtBuscar);
             }
         }
+    }
+    
+    public void btnPerfilClicked(){
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -105,7 +117,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
 
         pnlInicio.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 620, 450));
-        pnlInicio.add(pnlBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 650, -1));
+        pnlInicio.add(pnlBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 650, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

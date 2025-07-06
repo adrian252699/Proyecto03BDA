@@ -4,17 +4,23 @@
  */
 package miPerfil;
 
+import control.ControlNavegacion;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jalt2
  */
 public class MiPerfil extends javax.swing.JFrame {
-
+    private ControlNavegacion control;
     /**
      * Creates new form MiPerfil
      */
-    public MiPerfil() {
+    public MiPerfil(ControlNavegacion control) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.control=control;
+        this.pnlBuscador.setControl(control);
     }
 
     /**
@@ -26,6 +32,8 @@ public class MiPerfil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        pnlBuscador = new buscador.Buscador();
         pnlMiPerfil = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
@@ -45,9 +53,11 @@ public class MiPerfil extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtApellidoPaterno = new javax.swing.JTextField();
         txtApellidoMaterno = new javax.swing.JTextField();
-        pnlBuscador = new buscador.Buscador();
+        btnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
         pnlMiPerfil.setBackground(new java.awt.Color(102, 102, 102));
         pnlMiPerfil.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -56,96 +66,176 @@ public class MiPerfil extends javax.swing.JFrame {
         pnlMiPerfil.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lblUsuario.setText("Usuario");
         pnlMiPerfil.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, -1, -1));
 
         jLabel2.setText("Imagen");
         pnlMiPerfil.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
 
+        pnlInformacionCuenta.setBackground(new java.awt.Color(51, 51, 51));
         pnlInformacionCuenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Informacion de la cuenta");
         pnlInformacionCuenta.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         lblCorreo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblCorreo.setForeground(new java.awt.Color(255, 255, 255));
         lblCorreo.setText("Correo: ");
         pnlInformacionCuenta.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Contraseña:");
         pnlInformacionCuenta.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nombre Usuario:");
         pnlInformacionCuenta.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 110, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Nombre:");
         pnlInformacionCuenta.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Apellido Paterno:");
         pnlInformacionCuenta.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Apellido Materno:");
-        pnlInformacionCuenta.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
+        pnlInformacionCuenta.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(279, 100, 100, -1));
 
         btnEditar.setBackground(new java.awt.Color(0, 153, 51));
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnEditar.setText("Editar");
-        pnlInformacionCuenta.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 90, 20));
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+        pnlInformacionCuenta.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 90, 20));
 
         txtCorreo.setEditable(false);
-        pnlInformacionCuenta.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 180, -1));
+        txtCorreo.setForeground(new java.awt.Color(0, 0, 0));
+        txtCorreo.setBorder(null);
+        pnlInformacionCuenta.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 180, 20));
 
         txtContrasena.setEditable(false);
-        pnlInformacionCuenta.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 160, -1));
+        txtContrasena.setForeground(new java.awt.Color(0, 0, 0));
+        txtContrasena.setBorder(null);
+        pnlInformacionCuenta.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 160, 20));
 
         txtNombreUsuario.setEditable(false);
-        pnlInformacionCuenta.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 130, -1));
+        txtNombreUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombreUsuario.setBorder(null);
+        pnlInformacionCuenta.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 130, 20));
 
         txtNombre.setEditable(false);
-        pnlInformacionCuenta.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 190, -1));
+        txtNombre.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombre.setBorder(null);
+        pnlInformacionCuenta.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 190, 20));
 
         txtApellidoPaterno.setEditable(false);
-        pnlInformacionCuenta.add(txtApellidoPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 150, -1));
+        txtApellidoPaterno.setForeground(new java.awt.Color(0, 0, 0));
+        txtApellidoPaterno.setBorder(null);
+        pnlInformacionCuenta.add(txtApellidoPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 150, 20));
 
         txtApellidoMaterno.setEditable(false);
-        pnlInformacionCuenta.add(txtApellidoMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 150, -1));
+        txtApellidoMaterno.setForeground(new java.awt.Color(0, 0, 0));
+        txtApellidoMaterno.setBorder(null);
+        pnlInformacionCuenta.add(txtApellidoMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 150, 20));
+
+        btnGuardar.setBackground(new java.awt.Color(0, 153, 51));
+        btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setEnabled(false);
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        pnlInformacionCuenta.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, -1, 20));
 
         pnlMiPerfil.add(pnlInformacionCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 560, 170));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlBuscador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlMiPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(pnlMiPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(124, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnlMiPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(pnlMiPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+//        this.btnEditar.setEnabled(false);
+//        this.btnGuardar.setEnabled(true);
+//            this.txtNombre.setEditable(true);
+//            this.txtApellidoPaterno.setEditable(true);
+//            this.txtApellidoMaterno.setEditable(true);
+//            this.txtCorreo.setEditable(true);
+//            this.txtContrasena.setEditable(true);
+//            this.txtNombreUsuario.setEditable(true);
+        
+        String password = JOptionPane.showInputDialog(this, "Ingrese su contraseña", "Validacion", JOptionPane.INFORMATION_MESSAGE);
+        
+        if (password.equals(this.txtContrasena)) {
+            this.btnGuardar.setEnabled(true);
+            this.txtNombre.setEditable(true);
+            this.txtApellidoPaterno.setEditable(true);
+            this.txtApellidoMaterno.setEditable(true);
+            this.txtCorreo.setEditable(true);
+            this.txtContrasena.setEditable(true);
+            this.txtNombreUsuario.setEditable(true);
+        }else{
+            JOptionPane.showMessageDialog(this, "Credenciales Incorrectas", "Validacion", JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        this.btnEditar.setEnabled(true);
+        //Logica para actualizar datos
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -154,6 +244,7 @@ public class MiPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblUsuario;
     private buscador.Buscador pnlBuscador;
