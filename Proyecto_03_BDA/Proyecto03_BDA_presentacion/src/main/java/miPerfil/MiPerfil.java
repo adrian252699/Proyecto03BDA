@@ -5,7 +5,11 @@
 package miPerfil;
 
 import control.ControlNavegacion;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -38,7 +42,6 @@ public class MiPerfil extends javax.swing.JFrame {
         pnlMiPerfil = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         pnlInformacionCuenta = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         lblCorreo = new javax.swing.JLabel();
@@ -55,24 +58,27 @@ public class MiPerfil extends javax.swing.JFrame {
         txtApellidoPaterno = new javax.swing.JTextField();
         txtApellidoMaterno = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
+        lblUserPhoto = new javax.swing.JLabel();
+        btnCambiarFoto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(pnlBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         pnlMiPerfil.setBackground(new java.awt.Color(102, 102, 102));
         pnlMiPerfil.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText(" Mi Perfil");
-        pnlMiPerfil.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        pnlMiPerfil.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         lblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lblUsuario.setText("Usuario");
-        pnlMiPerfil.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, -1, -1));
-
-        jLabel2.setText("Imagen");
-        pnlMiPerfil.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
+        pnlMiPerfil.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
 
         pnlInformacionCuenta.setBackground(new java.awt.Color(51, 51, 51));
         pnlInformacionCuenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,6 +120,7 @@ public class MiPerfil extends javax.swing.JFrame {
 
         btnEditar.setBackground(new java.awt.Color(0, 153, 51));
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +161,7 @@ public class MiPerfil extends javax.swing.JFrame {
 
         btnGuardar.setBackground(new java.awt.Color(0, 153, 51));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
         btnGuardar.setEnabled(false);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -163,38 +171,34 @@ public class MiPerfil extends javax.swing.JFrame {
         });
         pnlInformacionCuenta.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, -1, 20));
 
-        pnlMiPerfil.add(pnlInformacionCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 560, 170));
+        pnlMiPerfil.add(pnlInformacionCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 560, 170));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlBuscador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlMiPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(pnlBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(pnlMiPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
-        );
+        lblUserPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/UserPhoto.png"))); // NOI18N
+        pnlMiPerfil.add(lblUserPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 128, 128));
+
+        btnCambiarFoto.setBackground(new java.awt.Color(0, 153, 51));
+        btnCambiarFoto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCambiarFoto.setForeground(new java.awt.Color(255, 255, 255));
+        btnCambiarFoto.setText("Cambiar foto");
+        btnCambiarFoto.setEnabled(false);
+        btnCambiarFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarFotoActionPerformed(evt);
+            }
+        });
+        pnlMiPerfil.add(btnCambiarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 130, 20));
+
+        jPanel1.add(pnlMiPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 620, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -202,34 +206,64 @@ public class MiPerfil extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 
-        String password = JOptionPane.showInputDialog(this, "Ingrese su contraseña", "Validacion", JOptionPane.INFORMATION_MESSAGE);
+//        String password = JOptionPane.showInputDialog(this, "Ingrese su contraseña", "Validacion", JOptionPane.INFORMATION_MESSAGE);
         
-        if (password.equals(this.txtContrasena)) {
+//        if (password.equals(this.txtContrasena)) {
+            this.btnEditar.setEnabled(false);
             this.btnGuardar.setEnabled(true);
+            this.btnCambiarFoto.setEnabled(true);
             this.txtNombre.setEditable(true);
             this.txtApellidoPaterno.setEditable(true);
             this.txtApellidoMaterno.setEditable(true);
             this.txtCorreo.setEditable(true);
             this.txtContrasena.setEditable(true);
             this.txtNombreUsuario.setEditable(true);
-        }else{
-            JOptionPane.showMessageDialog(this, "Credenciales Incorrectas", "Validacion", JOptionPane.WARNING_MESSAGE);
-        }
+//        }else{
+//            JOptionPane.showMessageDialog(this, "Credenciales Incorrectas", "Validacion", JOptionPane.WARNING_MESSAGE);
+//        }
         
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        this.btnGuardar.setEnabled(false);
+        this.btnCambiarFoto.setEnabled(false);
         this.btnEditar.setEnabled(true);
+        this.txtNombre.setEditable(false);
+        this.txtApellidoPaterno.setEditable(false);
+        this.txtApellidoMaterno.setEditable(false);
+        this.txtCorreo.setEditable(false);
+        this.txtContrasena.setEditable(false);
+        this.txtNombreUsuario.setEditable(false);
         //Logica para actualizar datos
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void btnCambiarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarFotoActionPerformed
+        // TODO add your handling code here:
+        String ruta = "";
+        
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG, PNG, JPEG, ICON", "jpg","png","jpeg","ico");
+        fileChooser.setFileFilter(filtro);
+        
+        int respuesta = fileChooser.showOpenDialog(this);
+        
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            ruta = fileChooser.getSelectedFile().getPath();
+            
+            Image imagen = new ImageIcon(ruta).getImage();
+            ImageIcon icon = new ImageIcon(imagen.getScaledInstance(lblUserPhoto.getWidth(), lblUserPhoto.getHeight(), Image.SCALE_SMOOTH));
+            lblUserPhoto.setIcon(icon);
+        }   
+        
+    }//GEN-LAST:event_btnCambiarFotoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCambiarFoto;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -238,6 +272,7 @@ public class MiPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblUserPhoto;
     private javax.swing.JLabel lblUsuario;
     private buscador.Buscador pnlBuscador;
     private javax.swing.JPanel pnlInformacionCuenta;

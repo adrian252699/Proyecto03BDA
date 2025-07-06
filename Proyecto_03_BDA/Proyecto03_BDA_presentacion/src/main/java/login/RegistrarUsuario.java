@@ -5,6 +5,11 @@
 package login;
 
 import control.ControlNavegacion;
+import control.ControlUsuario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import usuarioDTOs.RegistrarUsuarioDTO;
 
 /**
  *
@@ -12,6 +17,7 @@ import control.ControlNavegacion;
  */
 public class RegistrarUsuario extends javax.swing.JFrame {
     private ControlNavegacion controlNavegacion;
+//    private ControlUsuario controlUsuario;
     /**
      * Creates new form RegistrarUsuario
      */
@@ -30,6 +36,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlRegistrarUsuario = new javax.swing.JPanel();
         pnlRegistrarse = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -44,32 +51,48 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         txtNombreUsuario = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         txtContrasena = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnRegistrarUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        pnlRegistrarUsuario.setBackground(new java.awt.Color(51, 51, 51));
+        pnlRegistrarUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlRegistrarse.setBackground(new java.awt.Color(102, 102, 102));
         pnlRegistrarse.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Registrarse");
         pnlRegistrarse.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre");
         pnlRegistrarse.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Apellido Paterno");
         pnlRegistrarse.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Apellido Materno (Opcional)");
         pnlRegistrarse.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nombre de usuario");
         pnlRegistrarse.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Correo");
         pnlRegistrarse.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Contraseña");
         pnlRegistrarse.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
         pnlRegistrarse.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 120, -1));
@@ -79,34 +102,57 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         pnlRegistrarse.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 120, -1));
         pnlRegistrarse.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 120, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setText("Registrar Usuario");
-        pnlRegistrarse.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
+        btnRegistrarUsuario.setBackground(new java.awt.Color(0, 153, 51));
+        btnRegistrarUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnRegistrarUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarUsuario.setText("Registrar Usuario");
+        btnRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarUsuarioActionPerformed(evt);
+            }
+        });
+        pnlRegistrarse.add(btnRegistrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
+
+        pnlRegistrarUsuario.add(pnlRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 376, 403));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(pnlRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(145, Short.MAX_VALUE))
+            .addComponent(pnlRegistrarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(pnlRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+            .addComponent(pnlRegistrarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsuarioActionPerformed
+        // TODO add your handling code here:
+        RegistrarUsuarioDTO nuevoUsuario = new RegistrarUsuarioDTO();
+        
+        nuevoUsuario.setNombre(this.txtNombre.getText());
+        nuevoUsuario.setApellidoPaterno(this.txtApellidoPaterno.getText());
+        nuevoUsuario.setApellidoMaterno(this.txtApellidoMaterno.getText());
+        nuevoUsuario.setNombreUsuario(this.txtNombreUsuario.getText());
+        nuevoUsuario.setCorreo(this.txtCorreo.getText());
+        nuevoUsuario.setContrasena(this.txtContrasena.getText());
+        
+        try {
+            ControlUsuario.getInstance().registrarUsuario(nuevoUsuario);
+            JOptionPane.showMessageDialog(this, "Usuario Registrado Correctamente", "Registro", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+            controlNavegacion.iniciarFlujoLogin();
+        } catch (Exception ex) {
+            Logger.getLogger(RegistrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnRegistrarUsuarioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnRegistrarUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -114,6 +160,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel pnlRegistrarUsuario;
     private javax.swing.JPanel pnlRegistrarse;
     private javax.swing.JTextField txtApellidoMaterno;
     private javax.swing.JTextField txtApellidoPaterno;

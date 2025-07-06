@@ -7,6 +7,10 @@
     <packaging>pom</packaging>
     <modules>
         <module>Proyecto03_BDA_presentacion</module>
+        <module>Proyecto03_BDA_dominio</module>
+        <module>Proyecto03_BDA_persistencia</module>
+        <module>Proyecto03_BDA_dtos</module>
+        <module>Proyecto03_BDA_negocio</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -200,7 +200,7 @@ public class Buscador extends javax.swing.JPanel {
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
-        control.iniciarFlujo();
+        control.iniciarFlujoUsuario();
     }//GEN-LAST:event_btnHomeActionPerformed
 
 

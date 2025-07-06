@@ -1,4 +1,6 @@
 inicio\ExplorarCanciones.class
+login\Login$3.class
+control\ControlUsuario.class
 buscador\Buscador$4.class
 inicio\ExplorarGeneros$1.class
 inicio\ExplorarArtistas.class
@@ -10,11 +12,14 @@ miPerfil\MiPerfil$1.class
 buscador\Buscador$5.class
 control\ControlNavegacion$1.class
 buscador\Buscador$7.class
+miPerfil\MiPerfil$3.class
 inicio\Inicio.class
 buscador\Buscador$2.class
+login\RegistrarUsuario$1.class
 login\Login.class
 buscador\Buscador$3.class
 detalles\DetalleAlbum.class
+login\Login$2.class
 inicio\ExplorarAlbumes.class
 detalles\DetalleAlbum$1.class
 login\RegistrarUsuario.class

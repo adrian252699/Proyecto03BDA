@@ -5,6 +5,7 @@
 package inicio;
 
 import control.ControlNavegacion;
+import control.ControlUsuario;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -12,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import usuarioDTOs.LoginUsuarioDTO;
 
 /**
  *
@@ -21,12 +23,14 @@ public class Inicio extends javax.swing.JFrame {
     private final String TEXTO_DEFECTO = " ¿Que quieres escuchar?";
     private ControlNavegacion controlNavegacion;
     private JPanel buscador;
+    private LoginUsuarioDTO usuarioActual = ControlUsuario.getInstance().getUsuarioActual();
     /**
      * Creates new form Inicio
      */
     public Inicio(ControlNavegacion controlNavegacion) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.lblBienvenido.setText("Bienvenido "+usuarioActual.getNombre()+"!");
         this.controlNavegacion=controlNavegacion;
         this.buscador = buscador;
         this.pnlBuscador.setControl(controlNavegacion);
@@ -77,7 +81,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         btnFiltrar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblBienvenido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -96,11 +100,11 @@ public class Inicio extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Explorar");
-        pnlExplorar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 46, -1, -1));
+        pnlExplorar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         cmbFiltroExplorar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todo", "Canciones", "Albumes", "Artistas", "Generos" }));
         cmbFiltroExplorar.setBorder(null);
-        pnlExplorar.add(cmbFiltroExplorar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
+        pnlExplorar.add(cmbFiltroExplorar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,19 +128,21 @@ public class Inicio extends javax.swing.JFrame {
 
         btnFiltrar.setBackground(new java.awt.Color(0, 153, 51));
         btnFiltrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnFiltrar.setForeground(new java.awt.Color(255, 255, 255));
         btnFiltrar.setText("Filtrar");
-        pnlExplorar.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
+        pnlExplorar.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
         jButton1.setText("jButton1");
         pnlExplorar.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 710, -1, -1));
 
         jScrollPane1.setViewportView(pnlExplorar);
 
-        pnlInicio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 660, 380));
+        pnlInicio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 660, 410));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Bienvenido Adrian!");
-        pnlInicio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+        lblBienvenido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblBienvenido.setForeground(new java.awt.Color(255, 255, 255));
+        lblBienvenido.setText("Bienvenido !");
+        pnlInicio.add(lblBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,13 +164,13 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JComboBox<String> cmbFiltroExplorar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblBienvenido;
     private buscador.Buscador pnlBuscador;
     private javax.swing.JPanel pnlExplorar;
     private javax.swing.JPanel pnlInicio;

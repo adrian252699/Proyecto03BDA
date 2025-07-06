@@ -77,8 +77,21 @@ public class ControlNavegacion {
         return instancia;
     }
     
+    //Iniciar flujo del login
+    
+    public void iniciarFlujoLogin(){
+        this.frmLogin = new Login(this);
+        this.frmLogin.setVisible(true);
+    }
+    
+    public void iniciarRegistrarUsuario(){
+        this.frmRegistrarUsuario = new RegistrarUsuario(this);
+        this.frmLogin.dispose();
+        this.frmRegistrarUsuario.setVisible(true);
+    }
+    
     //Primero el flujo iniciara sin el inicio de sesion
-    public void iniciarFlujo(){
+    public void iniciarFlujoUsuario(){
         this.frmIncioFlujo = new Inicio(this);
         this.abrirFrame(frmIncioFlujo);
         

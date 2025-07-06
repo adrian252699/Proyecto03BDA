@@ -5,6 +5,13 @@
 package login;
 
 import control.ControlNavegacion;
+import static control.ControlNavegacion.getInstance;
+import control.ControlUsuario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import usuarioDTOs.LoginUsuarioDTO;
 
 /**
  *
@@ -32,6 +39,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         pnlLogin = new javax.swing.JPanel();
         txtUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -44,6 +52,9 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         pnlLogin.setBackground(new java.awt.Color(102, 102, 102));
         pnlLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -55,15 +66,18 @@ public class Login extends javax.swing.JFrame {
         pnlLogin.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 210, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Iniciar Sesion");
         pnlLogin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Correo Electronico");
         pnlLogin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Contraseña");
         pnlLogin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
 
@@ -72,29 +86,37 @@ public class Login extends javax.swing.JFrame {
 
         btnIniciarSesion.setBackground(new java.awt.Color(0, 153, 51));
         btnIniciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciarSesion.setText("Iniciar Sesion");
+        btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarSesionActionPerformed(evt);
+            }
+        });
         pnlLogin.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 150, 30));
 
         btnRegistrarUsuario.setBackground(new java.awt.Color(0, 153, 51));
         btnRegistrarUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnRegistrarUsuario.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrarUsuario.setText("Registrarse");
+        btnRegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarUsuarioActionPerformed(evt);
+            }
+        });
         pnlLogin.add(btnRegistrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 150, -1));
+
+        jPanel1.add(pnlLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 388, 441));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(pnlLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(145, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(pnlLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
         );
 
         pack();
@@ -104,12 +126,38 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
+    private void btnRegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarUsuarioActionPerformed
+        // TODO add your handling code here:
+        controlNavegacion.iniciarRegistrarUsuario();
+    }//GEN-LAST:event_btnRegistrarUsuarioActionPerformed
+
+    private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
+        // TODO add your handling code here:
+         LoginUsuarioDTO loginUsuario = new LoginUsuarioDTO(this.txtUsuario.getText(), this.txtContrasena.getText());
+        try {
+            LoginUsuarioDTO usuario = ControlUsuario.getInstance().iniciarSesion(loginUsuario);
+            if (usuario==null) {
+                JOptionPane.showMessageDialog(this, "Uusario o contraseña Incorrectos. Intente de nuevo." , "Error" , JOptionPane.ERROR_MESSAGE);
+                return;
+            }else{
+                JOptionPane.showMessageDialog(this, "Bienvenido: " + usuario.getNombre(), "Exito", INFORMATION_MESSAGE);
+                ControlUsuario.getInstance().setUsuarioActual(usuario);
+                
+                controlNavegacion.iniciarFlujoUsuario();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnIniciarSesionActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JButton btnRegistrarUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel pnlLogin;
     private javax.swing.JTextField txtContrasena;
     private javax.swing.JTextField txtUsuario;
