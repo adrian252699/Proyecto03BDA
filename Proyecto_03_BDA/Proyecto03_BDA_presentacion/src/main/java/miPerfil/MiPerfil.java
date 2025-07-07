@@ -5,11 +5,16 @@
 package miPerfil;
 
 import control.ControlNavegacion;
+import control.ControlUsuario;
 import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import usuarioDTOs.LoginUsuarioDTO;
+import usuarioDTOs.ModificarUsuarioDTO;
 
 /**
  *
@@ -17,12 +22,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class MiPerfil extends javax.swing.JFrame {
     private ControlNavegacion control;
+    private LoginUsuarioDTO usuarioActual = ControlUsuario.getInstance().getUsuarioActual();
     /**
      * Creates new form MiPerfil
      */
     public MiPerfil(ControlNavegacion control) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.rellenarInformacionTextField();
         this.control=control;
         this.pnlBuscador.setControl(control);
         this.control.agregarClickListeners(this, pnlBuscador.getTxtBuscar());
@@ -52,12 +59,12 @@ public class MiPerfil extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         btnEditar = new javax.swing.JButton();
         txtCorreo = new javax.swing.JTextField();
-        txtContrasena = new javax.swing.JTextField();
         txtNombreUsuario = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtApellidoPaterno = new javax.swing.JTextField();
         txtApellidoMaterno = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
+        txtContrasena = new javax.swing.JPasswordField();
         lblUserPhoto = new javax.swing.JLabel();
         btnCambiarFoto = new javax.swing.JButton();
 
@@ -134,11 +141,6 @@ public class MiPerfil extends javax.swing.JFrame {
         txtCorreo.setBorder(null);
         pnlInformacionCuenta.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 180, 20));
 
-        txtContrasena.setEditable(false);
-        txtContrasena.setForeground(new java.awt.Color(0, 0, 0));
-        txtContrasena.setBorder(null);
-        pnlInformacionCuenta.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 160, 20));
-
         txtNombreUsuario.setEditable(false);
         txtNombreUsuario.setForeground(new java.awt.Color(0, 0, 0));
         txtNombreUsuario.setBorder(null);
@@ -170,6 +172,9 @@ public class MiPerfil extends javax.swing.JFrame {
             }
         });
         pnlInformacionCuenta.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, -1, 20));
+
+        txtContrasena.setText("jPasswordField1");
+        pnlInformacionCuenta.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 160, -1));
 
         pnlMiPerfil.add(pnlInformacionCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 560, 170));
 
@@ -203,12 +208,22 @@ public class MiPerfil extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void rellenarInformacionTextField(){
+        this.lblUsuario.setText(usuarioActual.getNombreUsuario());
+        this.txtNombre.setText(usuarioActual.getNombre());
+        this.txtApellidoPaterno.setText(usuarioActual.getApellidoPaterno());
+        this.txtApellidoMaterno.setText(usuarioActual.getApellidoMaterno());
+        this.txtNombreUsuario.setText(usuarioActual.getNombreUsuario());
+        this.txtCorreo.setText(usuarioActual.getCorreo());
+        this.txtContrasena.setText(usuarioActual.getContrasena());
+    }
+    
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 
-//        String password = JOptionPane.showInputDialog(this, "Ingrese su contraseña", "Validacion", JOptionPane.INFORMATION_MESSAGE);
+        String password = JOptionPane.showInputDialog(this, "Ingrese su contraseña", "Validacion", JOptionPane.INFORMATION_MESSAGE);
         
-//        if (password.equals(this.txtContrasena)) {
+        if (password.equals(usuarioActual.getContrasena())) {
             this.btnEditar.setEnabled(false);
             this.btnGuardar.setEnabled(true);
             this.btnCambiarFoto.setEnabled(true);
@@ -218,14 +233,32 @@ public class MiPerfil extends javax.swing.JFrame {
             this.txtCorreo.setEditable(true);
             this.txtContrasena.setEditable(true);
             this.txtNombreUsuario.setEditable(true);
-//        }else{
-//            JOptionPane.showMessageDialog(this, "Credenciales Incorrectas", "Validacion", JOptionPane.WARNING_MESSAGE);
-//        }
+        }else{
+            JOptionPane.showMessageDialog(this, "Credenciales Incorrectas", "Validacion", JOptionPane.WARNING_MESSAGE);
+        }
         
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        //Logica para actualizar datos        
+        ModificarUsuarioDTO usuarioModificar = new ModificarUsuarioDTO(usuarioActual.getIdUsuario(), txtNombreUsuario.getText(), txtCorreo.getText(), 
+                txtContrasena.getText(), txtNombre.getText(), txtApellidoPaterno.getText(), txtApellidoMaterno.getText());
+        System.out.println(usuarioModificar.getIdUsuario());
+        try {
+//            ControlUsuario.getInstance().modificarUsuario(usuarioModificar);
+            if (ControlUsuario.getInstance().modificarUsuario(usuarioModificar)) {
+                JOptionPane.showMessageDialog(this, "Usuario Modificado", "Modificar", JOptionPane.INFORMATION_MESSAGE);
+                
+            }else{
+                JOptionPane.showMessageDialog(this, "No fue posible modificar", "Modificar", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(MiPerfil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //Deshabilitar campos de nuevo
+        this.lblUsuario.setText(usuarioModificar.getNombreUsuario());
         this.btnGuardar.setEnabled(false);
         this.btnCambiarFoto.setEnabled(false);
         this.btnEditar.setEnabled(true);
@@ -235,7 +268,6 @@ public class MiPerfil extends javax.swing.JFrame {
         this.txtCorreo.setEditable(false);
         this.txtContrasena.setEditable(false);
         this.txtNombreUsuario.setEditable(false);
-        //Logica para actualizar datos
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCambiarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarFotoActionPerformed
@@ -279,7 +311,7 @@ public class MiPerfil extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMiPerfil;
     private javax.swing.JTextField txtApellidoMaterno;
     private javax.swing.JTextField txtApellidoPaterno;
-    private javax.swing.JTextField txtContrasena;
+    private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreUsuario;

@@ -5,6 +5,7 @@
 package interfacesBO;
 
 import usuarioDTOs.LoginUsuarioDTO;
+import usuarioDTOs.ModificarUsuarioDTO;
 import usuarioDTOs.RegistrarUsuarioDTO;
 
 /**
@@ -14,4 +15,5 @@ import usuarioDTOs.RegistrarUsuarioDTO;
 public interface IUsuarioBO {
     public boolean registrarUsuario(RegistrarUsuarioDTO nuevoUsuario)throws Exception;
     public LoginUsuarioDTO iniciarSesion(LoginUsuarioDTO usuarioLogin)throws Exception;
+    public boolean modificarUsuario(ModificarUsuarioDTO usuarioModificar)throws Exception;
 }

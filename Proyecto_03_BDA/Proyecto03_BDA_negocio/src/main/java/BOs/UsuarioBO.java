@@ -7,6 +7,7 @@ package BOs;
 import DAOs.UsuarioDAO;
 import interfacesBO.IUsuarioBO;
 import usuarioDTOs.LoginUsuarioDTO;
+import usuarioDTOs.ModificarUsuarioDTO;
 import usuarioDTOs.RegistrarUsuarioDTO;
 
 /**
@@ -44,6 +45,15 @@ public class UsuarioBO implements IUsuarioBO{
         }
         
         return dao.iniciarSesion(usuarioLogin);
+    }
+
+    @Override
+    public boolean modificarUsuario(ModificarUsuarioDTO usuarioModificar) throws Exception {
+        if (usuarioModificar.getNombre()==null) {
+            throw new IllegalArgumentException("El nombre no puede ser null");
+        }
+        
+        return dao.modificarUsuario(usuarioModificar);
     }
     
 }

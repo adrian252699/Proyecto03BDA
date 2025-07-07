@@ -7,6 +7,7 @@ package control;
 import BOs.UsuarioBO;
 import fabrica.FabricaBO;
 import usuarioDTOs.LoginUsuarioDTO;
+import usuarioDTOs.ModificarUsuarioDTO;
 import usuarioDTOs.RegistrarUsuarioDTO;
 
 /**
@@ -35,6 +36,10 @@ public class ControlUsuario {
     
     public LoginUsuarioDTO iniciarSesion(LoginUsuarioDTO loginUsuario) throws Exception{
         return usuarioBO.iniciarSesion(loginUsuario);
+    }
+    
+    public boolean modificarUsuario(ModificarUsuarioDTO usuarioModificar) throws Exception{
+        return usuarioBO.modificarUsuario(usuarioModificar);
     }
 
     public void setUsuarioActual(LoginUsuarioDTO usuarioActual) {

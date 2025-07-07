@@ -45,9 +45,9 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtContrasena = new javax.swing.JTextField();
         btnIniciarSesion = new javax.swing.JButton();
         btnRegistrarUsuario = new javax.swing.JButton();
+        txtContrasena = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -81,9 +81,6 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("Contraseña");
         pnlLogin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
 
-        txtContrasena.setToolTipText("");
-        pnlLogin.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 210, 30));
-
         btnIniciarSesion.setBackground(new java.awt.Color(0, 153, 51));
         btnIniciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,6 +102,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         pnlLogin.add(btnRegistrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 150, -1));
+        pnlLogin.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 262, 200, 30));
 
         jPanel1.add(pnlLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 388, 441));
 
@@ -142,8 +140,8 @@ public class Login extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(this, "Bienvenido: " + usuario.getNombre(), "Exito", INFORMATION_MESSAGE);
                 ControlUsuario.getInstance().setUsuarioActual(usuario);
-                
                 controlNavegacion.iniciarFlujoUsuario();
+                dispose();
             }
         } catch (Exception ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -159,7 +157,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel pnlLogin;
-    private javax.swing.JTextField txtContrasena;
+    private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

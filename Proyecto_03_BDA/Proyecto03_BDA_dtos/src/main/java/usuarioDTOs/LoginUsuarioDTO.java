@@ -9,6 +9,7 @@ package usuarioDTOs;
  * @author jalt2
  */
 public class LoginUsuarioDTO {
+    private String idUsuario;
     private String nombreUsuario;
     private String contrasena;
     private String Correo;
@@ -62,6 +63,14 @@ public class LoginUsuarioDTO {
 
     public String getApellidoMaterno() {
         return apellidoMaterno;
+    }
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
     }
     
     
