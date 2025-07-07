@@ -4,7 +4,9 @@
  */
 package fabrica;
 
+import BOs.SolistaBO;
 import BOs.UsuarioBO;
+import DAOs.SolistaDAO;
 import DAOs.UsuarioDAO;
 
 /**
@@ -15,5 +17,10 @@ public class FabricaBO {
     public static UsuarioBO crearUsuarioBO(){
         UsuarioDAO dao = new UsuarioDAO();
         return new UsuarioBO(dao);
+    }
+    
+    public static SolistaBO crearSolistaBO(){
+        SolistaDAO dao = new SolistaDAO();
+        return new SolistaBO(dao);
     }
 }

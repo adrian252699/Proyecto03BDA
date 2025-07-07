@@ -73,8 +73,8 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Correo Electronico");
-        pnlLogin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
+        jLabel1.setText("Usuario");
+        pnlLogin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 120, 90, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,8 +101,8 @@ public class Login extends javax.swing.JFrame {
                 btnRegistrarUsuarioActionPerformed(evt);
             }
         });
-        pnlLogin.add(btnRegistrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 150, -1));
-        pnlLogin.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 262, 200, 30));
+        pnlLogin.add(btnRegistrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 382, 150, 30));
+        pnlLogin.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 262, 210, 30));
 
         jPanel1.add(pnlLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 388, 441));
 

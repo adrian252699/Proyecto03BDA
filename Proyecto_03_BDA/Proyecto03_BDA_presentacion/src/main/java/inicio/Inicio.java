@@ -4,15 +4,19 @@
  */
 package inicio;
 
+import Utilidades.JLabelRedondo;
 import control.ControlNavegacion;
+import control.ControlSolista;
 import control.ControlUsuario;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import solistaDTOs.BuscarSolistaDTO;
 import usuarioDTOs.LoginUsuarioDTO;
 
 /**
@@ -22,7 +26,6 @@ import usuarioDTOs.LoginUsuarioDTO;
 public class Inicio extends javax.swing.JFrame {
     private final String TEXTO_DEFECTO = " ¿Que quieres escuchar?";
     private ControlNavegacion controlNavegacion;
-    private JPanel buscador;
     private LoginUsuarioDTO usuarioActual = ControlUsuario.getInstance().getUsuarioActual();
     /**
      * Creates new form Inicio
@@ -30,11 +33,19 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio(ControlNavegacion controlNavegacion) {
         initComponents();
         this.setLocationRelativeTo(null);
+        cargarSolistas();
         this.lblBienvenido.setText("Bienvenido "+usuarioActual.getNombre()+"!");
         this.controlNavegacion=controlNavegacion;
-        this.buscador = buscador;
         this.pnlBuscador.setControl(controlNavegacion);
         this.agregarClickListeners(this, this.pnlBuscador.getTxtBuscar());
+    }
+    
+    private void cargarSolistas(){
+//        List<BuscarSolistaDTO> solistas = ControlSolista.getInstance().recuperarArtistas();
+//        JLabelRedondo labelIconArtista; 
+//        labelIconArtista = new JLabelRedondo("A", Color.RED);
+//        this.add(labelIconArtista);
+//        this.pnlExplorar.add(labelIconArtista);
     }
     
     private void agregarClickListeners(Component comp, JTextField txtBuscar) {
@@ -81,6 +92,34 @@ public class Inicio extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         btnFiltrar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        lblIconArtista1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblIconCancion1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lblCancion2 = new javax.swing.JLabel();
+        lblCancion3 = new javax.swing.JLabel();
+        lblCancion4 = new javax.swing.JLabel();
+        lblCancion5 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
         lblBienvenido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -109,22 +148,22 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Canciones");
-        pnlExplorar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        pnlExplorar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Artistas");
-        pnlExplorar.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+        pnlExplorar.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Albumes");
-        pnlExplorar.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
+        pnlExplorar.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Generos");
-        pnlExplorar.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, -1, -1));
+        pnlExplorar.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 650, -1, -1));
 
         btnFiltrar.setBackground(new java.awt.Color(0, 153, 51));
         btnFiltrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -133,11 +172,122 @@ public class Inicio extends javax.swing.JFrame {
         pnlExplorar.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
         jButton1.setText("jButton1");
-        pnlExplorar.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 710, -1, -1));
+        pnlExplorar.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 840, -1, -1));
+
+        lblIconArtista1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsArtistas/MoraIcon.jpg"))); // NOI18N
+        pnlExplorar.add(lblIconArtista1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 100, 100));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Mora");
+        pnlExplorar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
+
+        lblIconCancion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsArtistas/Canciones/TuyoByMora.jpg"))); // NOI18N
+        pnlExplorar.add(lblIconCancion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 100, 100));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Tuyo - Mora");
+        pnlExplorar.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsArtistas/DeftonesIcon.jpg"))); // NOI18N
+        pnlExplorar.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 100, 100));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Deftones");
+        pnlExplorar.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, -1, -1));
+
+        lblCancion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsArtistas/AliceInChainsIcon.jpg"))); // NOI18N
+        pnlExplorar.add(lblCancion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 100, 100));
+
+        lblCancion3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsArtistas/Canciones/OneByMetallica.jpg"))); // NOI18N
+        pnlExplorar.add(lblCancion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 100, 100));
+
+        lblCancion4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsArtistas/Canciones/FaintByLikinPark.jpg"))); // NOI18N
+        pnlExplorar.add(lblCancion4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 100, 100));
+
+        lblCancion5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsArtistas/RadioHeadIcon.jpg"))); // NOI18N
+        pnlExplorar.add(lblCancion5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 100, 100));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("RadioHead");
+        pnlExplorar.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Alice in chains");
+        pnlExplorar.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("One - Metallica");
+        pnlExplorar.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Faint - Linkin Park");
+        pnlExplorar.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsArtistas/Canciones/AnimalIhaveBecomeByThreeDaysGrace.jpg"))); // NOI18N
+        pnlExplorar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 100, 100));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Animal I Have Become - Three Days Grace");
+        pnlExplorar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 130, -1));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsArtistas/RadioHeadTheBends.jpg"))); // NOI18N
+        jLabel16.setText("jLabel16");
+        pnlExplorar.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 480, 100, 100));
+
+        jLabel17.setText("jLabel16");
+        pnlExplorar.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 690, 100, 100));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsArtistas/Canciones/AnimalIhaveBecomeByThreeDaysGrace.jpg"))); // NOI18N
+        jLabel18.setText("jLabel16");
+        pnlExplorar.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 480, 100, 100));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsArtistas/Canciones/TuyoByMora.jpg"))); // NOI18N
+        jLabel19.setText("jLabel16");
+        pnlExplorar.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 100, 100));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("The bends - RadioHead");
+        pnlExplorar.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 590, -1, -1));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Meteora - Linkin Park");
+        pnlExplorar.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Time to Dying - Three Days Grace");
+        pnlExplorar.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 590, 120, -1));
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("Primer dia de clases - Mora");
+        pnlExplorar.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 590, 120, -1));
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgsArtistas/Canciones/FaintByLikinPark.jpg"))); // NOI18N
+        pnlExplorar.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 100, 100));
+
+        jLabel25.setText("jLabel16");
+        pnlExplorar.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, 100, 100));
+
+        jLabel26.setText("jLabel16");
+        pnlExplorar.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 690, 100, 100));
+
+        jLabel27.setText("jLabel16");
+        pnlExplorar.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 690, 100, 100));
 
         jScrollPane1.setViewportView(pnlExplorar);
 
-        pnlInicio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 660, 410));
+        pnlInicio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 660, 470));
 
         lblBienvenido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblBienvenido.setForeground(new java.awt.Color(255, 255, 255));
@@ -152,25 +302,53 @@ public class Inicio extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JComboBox<String> cmbFiltroExplorar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBienvenido;
+    private javax.swing.JLabel lblCancion2;
+    private javax.swing.JLabel lblCancion3;
+    private javax.swing.JLabel lblCancion4;
+    private javax.swing.JLabel lblCancion5;
+    private javax.swing.JLabel lblIconArtista1;
+    private javax.swing.JLabel lblIconCancion1;
     private buscador.Buscador pnlBuscador;
     private javax.swing.JPanel pnlExplorar;
     private javax.swing.JPanel pnlInicio;

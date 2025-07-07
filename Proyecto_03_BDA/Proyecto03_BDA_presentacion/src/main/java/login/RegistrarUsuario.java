@@ -50,8 +50,8 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         txtApellidoMaterno = new javax.swing.JTextField();
         txtNombreUsuario = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
-        txtContrasena = new javax.swing.JTextField();
         btnRegistrarUsuario = new javax.swing.JButton();
+        txtContrasena = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,7 +100,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         pnlRegistrarse.add(txtApellidoMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 120, -1));
         pnlRegistrarse.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 120, -1));
         pnlRegistrarse.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 120, -1));
-        pnlRegistrarse.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 120, -1));
 
         btnRegistrarUsuario.setBackground(new java.awt.Color(0, 153, 51));
         btnRegistrarUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -112,6 +111,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
             }
         });
         pnlRegistrarse.add(btnRegistrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
+        pnlRegistrarse.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 120, -1));
 
         pnlRegistrarUsuario.add(pnlRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 376, 403));
 
@@ -164,7 +164,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel pnlRegistrarse;
     private javax.swing.JTextField txtApellidoMaterno;
     private javax.swing.JTextField txtApellidoPaterno;
-    private javax.swing.JTextField txtContrasena;
+    private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreUsuario;
