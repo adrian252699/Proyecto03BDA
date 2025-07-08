@@ -127,7 +127,7 @@ public class Inicio extends javax.swing.JFrame {
 
         pnlInicio.setBackground(new java.awt.Color(51, 51, 51));
         pnlInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pnlInicio.add(pnlBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 650, 70));
+        pnlInicio.add(pnlBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 710, 70));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setBorder(null);

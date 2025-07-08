@@ -52,6 +52,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         txtCorreo = new javax.swing.JTextField();
         btnRegistrarUsuario = new javax.swing.JButton();
         txtContrasena = new javax.swing.JPasswordField();
+        btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,6 +116,17 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
         pnlRegistrarUsuario.add(pnlRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 376, 403));
 
+        btnRegresar.setBackground(new java.awt.Color(255, 51, 51));
+        btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        pnlRegistrarUsuario.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,9 +162,16 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRegistrarUsuarioActionPerformed
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+        controlNavegacion.iniciarFlujoLogin();
+        dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrarUsuario;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

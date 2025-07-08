@@ -1,3 +1,4 @@
+buscador\Buscador$9.class
 login\Login$3.class
 inicio\ExplorarArtistas$1.class
 inicio\ExplorarGeneros.class
@@ -17,6 +18,7 @@ buscador\Buscador.class
 buscador\Buscador$1.class
 control\ControlNavegacion.class
 inicio\ExplorarAlbumes$1.class
+login\RegistrarUsuario$2.class
 inicio\ExplorarCanciones.class
 control\ControlUsuario.class
 Utilidades\JLabelRedondo.class

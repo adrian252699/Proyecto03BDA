@@ -80,14 +80,14 @@ public class ControlNavegacion {
     //Iniciar flujo del login
     
     public void iniciarFlujoLogin(){
+        
         this.frmLogin = new Login(this);
-        this.frmLogin.setVisible(true);
+        this.abrirFrame(frmLogin);
     }
     
     public void iniciarRegistrarUsuario(){
         this.frmRegistrarUsuario = new RegistrarUsuario(this);
-        this.frmLogin.dispose();
-        this.frmRegistrarUsuario.setVisible(true);
+        this.abrirFrame(frmRegistrarUsuario);
     }
     
     //Primero el flujo iniciara sin el inicio de sesion
@@ -124,7 +124,7 @@ public class ControlNavegacion {
     }
     
     public void regresar() {
-        if (!historialAtras.isEmpty()) {
+        if (!historialAtras.isEmpty()&&historialAtras.getLast()!=frmLogin) {
             historialAdelante.push(frmActual);
             frmActual.setVisible(false);
             frmActual = historialAtras.pop();

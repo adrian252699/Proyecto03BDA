@@ -2,6 +2,7 @@
 package buscador;
 
 import control.ControlNavegacion;
+import control.ControlUsuario;
 
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -91,6 +92,7 @@ public class Buscador extends javax.swing.JPanel {
         txtBuscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnHome = new javax.swing.JButton();
+        btnLogOut = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -172,6 +174,15 @@ public class Buscador extends javax.swing.JPanel {
             }
         });
         add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 30, 30));
+
+        btnLogOut.setBackground(new java.awt.Color(0, 153, 51));
+        btnLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/LogOut.png"))); // NOI18N
+        btnLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogOutActionPerformed(evt);
+            }
+        });
+        add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 30, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
@@ -203,6 +214,14 @@ public class Buscador extends javax.swing.JPanel {
         control.iniciarFlujoUsuario();
     }//GEN-LAST:event_btnHomeActionPerformed
 
+    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
+        // TODO add your handling code here:
+        control.getFrmActual().dispose();
+        control.iniciarFlujoLogin();
+        
+        ControlUsuario.getInstance().setUsuarioActual(null);
+    }//GEN-LAST:event_btnLogOutActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -210,6 +229,7 @@ public class Buscador extends javax.swing.JPanel {
     private javax.swing.JButton btnFavoritos;
     private javax.swing.JButton btnForward;
     private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnPerfil;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel pnlBuscador;
