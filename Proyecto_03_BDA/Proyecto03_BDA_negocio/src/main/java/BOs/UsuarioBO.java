@@ -25,10 +25,7 @@ public class UsuarioBO implements IUsuarioBO{
     //Cambiar despues exceptio por exceptioBO
     @Override
     public boolean registrarUsuario(RegistrarUsuarioDTO nuevoUsuario) throws Exception{
-        if (nuevoUsuario.getNombre() == null || nuevoUsuario.getApellidoPaterno()==null) {
-            //lanzar excepcion
-            throw new IllegalArgumentException("El nombre o el apellido paterno no pueden ser null");
-        }
+        this.validarUsuarioVacio(nuevoUsuario);
         
         return dao.registrarUsuario(nuevoUsuario);
     }
@@ -54,6 +51,18 @@ public class UsuarioBO implements IUsuarioBO{
         }
         
         return dao.modificarUsuario(usuarioModificar);
+    }
+    
+    
+    private void validarUsuarioVacio(RegistrarUsuarioDTO nuevoUsuario){
+        if (nuevoUsuario.getNombre().isEmpty()||nuevoUsuario.getApellidoPaterno().isEmpty()||nuevoUsuario.getCorreo().isEmpty()||nuevoUsuario.getNombreUsuario().isEmpty()||nuevoUsuario.getContrasena().isEmpty()) {
+            throw new IllegalArgumentException("Los Campos obligatorios deben ser rellenados");
+        }
+        
+        if (nuevoUsuario.getNombre() == null || nuevoUsuario.getApellidoPaterno()==null) {
+            //lanzar excepcion
+            throw new IllegalArgumentException("El nombre o el apellido paterno no pueden ser null");
+        }
     }
     
 }

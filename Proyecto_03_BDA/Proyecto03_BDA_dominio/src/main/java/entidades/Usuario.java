@@ -9,7 +9,6 @@ package entidades;
  * @author jalt2
  */
 public class Usuario {
-    private String idUsuario;
     private String nombreUsuario;
     private String Correo;
     private String contrasena;
@@ -20,8 +19,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String idUsuario, String nombreUsuario, String Correo, String contrasena, String nombre, String apellidoPaterno, String apellidoMaterno) {
-        this.idUsuario = idUsuario;
+    public Usuario(String nombreUsuario, String Correo, String contrasena, String nombre, String apellidoPaterno, String apellidoMaterno) { 
         this.nombreUsuario = nombreUsuario;
         this.Correo = Correo;
         this.contrasena = contrasena;
@@ -30,16 +28,6 @@ public class Usuario {
         this.apellidoMaterno = apellidoMaterno;
     }
     
-    
-    
-    public Usuario(String nombreUsuario, String Correo, String contrasena, String nombre, String apellidoPaterno, String apellidoMaterno) {
-        this.nombreUsuario = nombreUsuario;
-        this.Correo = Correo;
-        this.contrasena = contrasena;
-        this.nombre = nombre;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
-    }
 
     public String getNombreUsuario() {
         return nombreUsuario;

@@ -5,8 +5,10 @@
 package entidades;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
-import javax.swing.Icon;
+import java.util.stream.Collectors;
+import org.bson.Document;
 
 /**
  *
@@ -16,34 +18,40 @@ public class Album {
     private String nombre;
     private Calendar fechaLanzamiento;
     private List<String> listaGeneros;
-    private Icon imagen;
+    private String rutaImagen;
     private List<Cancion> listaCanciones;
-    private Solista artistaSolista;
-    private Banda artistaBanda;
+
+    
 
     public Album() {
     }
     
     //Cuando el album sea de un solista
-    public Album(String nombre, Calendar fechaLanzamiento, List<String> listaGeneros, Icon imagen, List<Cancion> listaCanciones, Solista artistaSolista) {
+    public Album(String nombre, Calendar fechaLanzamiento, List<String> listaGeneros, String imagen, List<Cancion> listaCanciones) {
         this.nombre = nombre;
         this.fechaLanzamiento = fechaLanzamiento;
         this.listaGeneros = listaGeneros;
-        this.imagen = imagen;
+        this.rutaImagen = imagen;
         this.listaCanciones = listaCanciones;
-        this.artistaSolista = artistaSolista;
+
+    }
+    public Document toDocument() {
+        
+        // Convertir fechaLanzamiento a java.util.Date
+        Date fecha = fechaLanzamiento != null ? fechaLanzamiento.getTime() : null;
+
+        // Convertir las canciones a List<Document>
+        List<Document> cancionesDoc = listaCanciones != null
+            ? listaCanciones.stream().map(Cancion::toDocument).collect(Collectors.toList())
+            : null;
+
+        return new Document("nombre", nombre)
+            .append("fechaLanzamiento", fecha)
+            .append("listaGeneros", listaGeneros)
+            .append("rutaImagen", rutaImagen)
+            .append("listaCanciones", cancionesDoc);
     }
     
-    //Cuando el album sea de una banda
-    public Album(String nombre, Calendar fechaLanzamiento, List<String> listaGeneros, Icon imagen, List<Cancion> listaCanciones, Banda artistaBanda) {
-        this.nombre = nombre;
-        this.fechaLanzamiento = fechaLanzamiento;
-        this.listaGeneros = listaGeneros;
-        this.imagen = imagen;
-        this.listaCanciones = listaCanciones;
-        this.artistaBanda = artistaBanda;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -68,12 +76,12 @@ public class Album {
         this.listaGeneros = listaGeneros;
     }
 
-    public Icon getImagen() {
-        return imagen;
+    public String getRutaImagen() {
+        return rutaImagen;
     }
 
-    public void setImagen(Icon imagen) {
-        this.imagen = imagen;
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
 
     public List<Cancion> getListaCanciones() {
@@ -82,22 +90,6 @@ public class Album {
 
     public void setListaCanciones(List<Cancion> listaCanciones) {
         this.listaCanciones = listaCanciones;
-    }
-
-    public Solista getArtistaSolista() {
-        return artistaSolista;
-    }
-
-    public void setArtistaSolista(Solista artistaSolista) {
-        this.artistaSolista = artistaSolista;
-    }
-
-    public Banda getArtistaBanda() {
-        return artistaBanda;
-    }
-
-    public void setArtistaBanda(Banda artistaBanda) {
-        this.artistaBanda = artistaBanda;
     }
     
     

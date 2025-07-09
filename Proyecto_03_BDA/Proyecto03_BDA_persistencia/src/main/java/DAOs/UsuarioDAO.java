@@ -11,6 +11,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Sorts;
 import conexionMongo.Conexion;
 import entidades.Usuario;
+import hashPasswords.Seguridad;
 import interfacesDAO.IUsuarioDAO;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -41,7 +42,7 @@ public class UsuarioDAO implements IUsuarioDAO{
                     .append("nombre", nuevoUsuario.getNombre())
                     .append("apellidoPaterno", nuevoUsuario.getApellidoPaterno())
                     .append("apellidoMaterno", nuevoUsuario.getApellidoMaterno()).append("correo", nuevoUsuario.getCorreo())
-                    .append("nombreUsuario", nuevoUsuario.getNombreUsuario()).append("contrasena", nuevoUsuario.getContrasena());
+                    .append("nombreUsuario", nuevoUsuario.getNombreUsuario()).append("contrasena", Seguridad.hashPassword(nuevoUsuario.getContrasena()));
             
             coleccion.insertOne(usuario);
             return true;
@@ -97,21 +98,25 @@ public class UsuarioDAO implements IUsuarioDAO{
             MongoDatabase baseDatos = conexion.obtenerBaseDatos(clienteMongo);
             MongoCollection<Document> coleccion = baseDatos.getCollection("Usuarios");
             
-            Document filtro = new Document("nombreUsuario",usuarioLogin.getNombreUsuario())
-                    .append("contrasena", usuarioLogin.getContrasena());
-            
+            Document filtro = new Document("nombreUsuario",usuarioLogin.getNombreUsuario());
             Document resultado = coleccion.find(filtro).first();
             
             if (resultado != null) {
-                usuarioLogin.setIdUsuario(resultado.getString("idUsuario"));
-                usuarioLogin.setNombre(resultado.getString("nombre"));
-                usuarioLogin.setApellidoPaterno(resultado.getString("apellidoPaterno"));
-                usuarioLogin.setApellidoMaterno(resultado.getString("apellidoMaterno"));
-                usuarioLogin.setCorreo(resultado.getString("correo"));
+                String passwordBD = resultado.getString("contrasena");
+                if (Seguridad.verificarPassword(usuarioLogin.getContrasena(), passwordBD)) {
+                    usuarioLogin.setIdUsuario(resultado.getString("idUsuario"));
+                    usuarioLogin.setNombre(resultado.getString("nombre"));
+                    usuarioLogin.setApellidoPaterno(resultado.getString("apellidoPaterno"));
+                    usuarioLogin.setApellidoMaterno(resultado.getString("apellidoMaterno"));
+                    usuarioLogin.setCorreo(resultado.getString("correo"));
+                    return usuarioLogin;
+                }else{
+                    //Contraseña incorrecta
+                    return null;
+                }
                 
-                
-                return usuarioLogin;
             }else{
+                //Usuario no encontrado
                 return null;
             }
             

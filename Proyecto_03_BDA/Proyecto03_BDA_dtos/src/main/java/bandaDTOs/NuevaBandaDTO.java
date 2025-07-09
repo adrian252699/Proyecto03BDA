@@ -2,51 +2,38 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package entidades;
+package bandaDTOs;
 
+import entidades.Album;
+import entidades.Integrante;
 import java.util.List;
-import javax.swing.Icon;
-import org.bson.Document;
 
 /**
  *
  * @author jalt2
  */
-public class Banda {
+public class NuevaBandaDTO {
     private String nombreBanda;
-    private String rutaImagen;
     private List<String> listaGeneros;
     private List<Integrante> listaIntegrantes;
     private List<Album> albumes;
 
-    public Banda() {
+    public NuevaBandaDTO() {
     }
 
-    public Banda(String nombreBanda, String imagen, List<String> listaGeneros, List<Integrante> listaIntegrantes) {
+    public NuevaBandaDTO(String nombreBanda, List<String> listaGeneros, List<Integrante> listaIntegrantes, List<Album> albumes) {
         this.nombreBanda = nombreBanda;
-        this.rutaImagen = imagen;
         this.listaGeneros = listaGeneros;
         this.listaIntegrantes = listaIntegrantes;
+        this.albumes = albumes;
     }
-    
-    public Document toDocument(){
-        return new Document();
-    }
-    
+
     public String getNombreBanda() {
         return nombreBanda;
     }
 
     public void setNombreBanda(String nombreBanda) {
         this.nombreBanda = nombreBanda;
-    }
-
-    public String getRutaImagen() {
-        return rutaImagen;
-    }
-
-    public void setRutaImagen(String rutaImagen) {
-        this.rutaImagen = rutaImagen;
     }
 
     public List<String> getListaGeneros() {
@@ -63,6 +50,14 @@ public class Banda {
 
     public void setListaIntegrantes(List<Integrante> listaIntegrantes) {
         this.listaIntegrantes = listaIntegrantes;
+    }
+
+    public List<Album> getAlbumes() {
+        return albumes;
+    }
+
+    public void setAlbumes(List<Album> albumes) {
+        this.albumes = albumes;
     }
     
     

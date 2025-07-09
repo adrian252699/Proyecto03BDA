@@ -13,12 +13,21 @@ import javax.swing.Icon;
  */
 public class Solista {
     private String nombreArtista;
-    private Icon imagen;
+    private String rutaImagen;
     private List<String> listaGeneros;
+    private List<Album> albumes;
 
-    public Solista(String nombreArtista, Icon imagen, List<String> listaGeneros) {
+    public Solista(String nombreArtista, String rutaImagen, List<String> listaGeneros, List<Album> albumes) {
         this.nombreArtista = nombreArtista;
-        this.imagen = imagen;
+        this.rutaImagen = rutaImagen;
+        this.listaGeneros = listaGeneros;
+        this.albumes = albumes;
+    }
+
+    
+    public Solista(String nombreArtista, String imagen, List<String> listaGeneros) {
+        this.nombreArtista = nombreArtista;
+        this.rutaImagen = imagen;
         this.listaGeneros = listaGeneros;
     }
 
@@ -30,12 +39,12 @@ public class Solista {
         this.nombreArtista = nombreArtista;
     }
 
-    public Icon getImagen() {
-        return imagen;
+    public String getRutaImagen() {
+        return rutaImagen;
     }
 
-    public void setImagen(Icon imagen) {
-        this.imagen = imagen;
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
 
     public List<String> getListaGeneros() {

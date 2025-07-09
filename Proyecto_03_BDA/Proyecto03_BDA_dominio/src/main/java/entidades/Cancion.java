@@ -5,6 +5,7 @@
 package entidades;
 
 import javax.swing.Icon;
+import org.bson.Document;
 
 /**
  *
@@ -12,26 +13,20 @@ import javax.swing.Icon;
  */
 public class Cancion {
     private String nombre;
-    private Icon imagen;
-    private Solista artistaSolista;
-    private Banda artistaBanda;
+    private Double duracion;
+
 
     public Cancion() {
     }
     
-    //Cuando la cancion sea de un solista
-    public Cancion(String nombre, Icon imagen, Solista artistaSolista) {
+    public Document toDocument(){
+        return new Document("nombreCancion",this.nombre).append("duracion", this.duracion);
+    }
+    public Cancion(String nombre, Double duracion) {
         this.nombre = nombre;
-        this.imagen = imagen;
-        this.artistaSolista = artistaSolista;
+        this.duracion = duracion;
     }
     
-    //Cuando la cancion sea de una banda
-    public Cancion(String nombre, Icon imagen, Banda artistaBanda) {
-        this.nombre = nombre;
-        this.imagen = imagen;
-        this.artistaBanda = artistaBanda;
-    }
 
     public String getNombre() {
         return nombre;
@@ -41,31 +36,12 @@ public class Cancion {
         this.nombre = nombre;
     }
 
-    public Icon getImagen() {
-        return imagen;
+    public Double getDuracion() {
+        return duracion;
     }
 
-    public void setImagen(Icon imagen) {
-        this.imagen = imagen;
+    public void setDuracion(Double duracion) {
+        this.duracion = duracion;
     }
-
-    public Solista getArtistaSolista() {
-        return artistaSolista;
-    }
-
-    public void setArtistaSolista(Solista artistaSolista) {
-        this.artistaSolista = artistaSolista;
-    }
-
-    public Banda getArtistaBanda() {
-        return artistaBanda;
-    }
-
-    public void setArtistaBanda(Banda artistaBanda) {
-        this.artistaBanda = artistaBanda;
-    }
-
-    
-    
     
 }
